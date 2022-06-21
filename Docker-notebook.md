@@ -308,6 +308,31 @@ Criamos um novo nginx com o `-m` ou `--memory`. Este comando seta um maximo de m
 
 Podemos utilizar o comando `docker container update --cpu`
 
+---
 
+`docker container rm <id>` - para e remove um container
+`docker container rm -f <id>` - para e remove um container mesmo que esteja em execução através do `force`
 
- 
+---
+
+`docker image ls` - lista as imagens que nós utilizamos.
+
+---
+
+### Docker file tosko
+
+- Criamos um dockerfile
+
+```dockerfile
+FROM debian
+
+LABEL app="Giropops"
+ENV ISAIAS="dev"
+
+RUN apt-get update && apt-get install -y stress & apt-get clean
+
+CMD stress --cepu 1 --vm-bytes 64M --vm 1
+```
+
+- Precisamos fazer o build deste dockerfile `docker image build -toskeira:1.0 . `
+
